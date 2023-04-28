@@ -1,0 +1,21 @@
+{
+  "name": "discord-server",
+  "version": "1.0.0",
+  "main": "build",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.16.2",
+    "nodemon": "^2.0.22",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "dev": "tsc && nodemon build",
+    "start": "ts-node ./src/index.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-joi-validation": "^5.0.1",
+    "joi": "^17.9.2"
+  }
+}
