@@ -1,0 +1,9 @@
+services:
+  discord_clone_db:
+    image: mongo
+    container_name: discord_clone_db
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_DATABASE=Discord_clone
