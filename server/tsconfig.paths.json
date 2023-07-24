@@ -4,7 +4,8 @@
     "paths": {
       "~/*": ["src/*"],
       "~features/*": ["src/features/*"],
-      "~datasources/*": ["src/datasources/*"]
+      "~datasources/*": ["src/datasources/*"],
+      "~common/*": ["src/common/*"]
     }
   }
 }
