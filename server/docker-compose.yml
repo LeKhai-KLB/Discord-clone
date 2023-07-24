@@ -7,3 +7,9 @@ services:
       - 27017:27017
     environment:
       - MONGO_INITDB_DATABASE=Discord_clone
+  discord_clone_redis:
+    image: redis
+    container_name: discord_clone_redis
+    restart: always
+    ports:
+      - 6379:6379
