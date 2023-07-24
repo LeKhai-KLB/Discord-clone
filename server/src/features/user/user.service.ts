@@ -1,14 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { CreateUserDto } from "./dto/create-user.dto";
-import { Repository } from "typeorm";
+import { FindManyOptions, FindOneOptions, Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "./entities/user.entity";
 import * as bcrypt from "bcrypt";
-import { PaginateConfig } from "nestjs-paginate";
 
 @Injectable()
-export class UsersService {
-  private paginateConfig: PaginateConfig<User>;
+export class UserService {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>
   ) {}
@@ -26,13 +24,13 @@ export class UsersService {
     return newUser;
   }
 
-  // findAll() {
-  //   return `This action returns all users`;
-  // }
+  find(options: FindManyOptions<User>) {
+    return this.userRepository.find(options);
+  }
 
-  // findOne(id: string) {
-  //   return `This action returns a #${id} user`;
-  // }
+  findOne(options: FindOneOptions<User>) {
+    return this.userRepository.findOne(options);
+  }
 
   // update(id: number, updateUserDto: UpdateUserDto) {
   //   return `This action updates a #${id} user`;
