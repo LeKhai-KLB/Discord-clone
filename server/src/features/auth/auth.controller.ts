@@ -1,25 +1,25 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from "@nestjs/common";
+import { Controller, Post, Body, Req, Res } from "@nestjs/common";
 import { AuthService } from "./auth.service";
-import { CreateUserDto } from "~features/users/dto/create-user.dto";
+import { CreateUserDto } from "~features/user/dto/create-user.dto";
 import { CredentialsDto } from "./dto/credentials.dto";
+import { Request } from "express";
 
 @Controller("auth")
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+
+    @Req() request: Request,
+    @Res() response: Response
+  ) {}
 
   @Post()
   register(@Body() createUserDto: CreateUserDto) {
-    return this.authService.register(createUserDto);
+    return this.authService.createUser(createUserDto);
   }
 
-  @Post()
-  login(@Body() credentials: CredentialsDto) {}
+  // @Post()
+  // async login(@Body() credentials: CredentialsDto) {
+  //   const user = await this.authService.verify(credentials);
+  // }
 }
